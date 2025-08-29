@@ -1,21 +1,12 @@
 #include <iostream>
 
 
-void multiplying_matrix_vector(float matrix_a[][4], float array_b[4], float matrix_c[][4]) {
+void multiplying_matrix_vector(float matrix_a[][4], float array_b[4], float matrix_c[4]) {
 
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            float element_m = matrix_a[i][j];
-            float element_a = array_b[j];
-            matrix_c[i][j] = element_m * element_a;
+            matrix_c[i] += array_b[j] * matrix_a[i][j];
         }
-    }
-
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            std::cout << matrix_c[i][j] << " ";
-        }
-        std::cout << std::endl;
     }
 }
 
@@ -24,7 +15,7 @@ int main() {
 
     float matrix_a[4][4];
     float array_b[4];
-    float matrix_c[4][4];
+    float matrix_c[4];
 
     std::cout << "Enter matrix \'A\'" << std::endl;
 
@@ -46,4 +37,7 @@ int main() {
 
     std::cout << "Multiplying a matrix by a vector" << std::endl;
     multiplying_matrix_vector(matrix_a, array_b, matrix_c);
+    for (int i = 0; i < 4; i++) {
+        std::cout << matrix_c[i] << " ";
+    }
 }
